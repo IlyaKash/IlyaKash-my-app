@@ -1,0 +1,96 @@
+<html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <link href="lab1.css" rel="stylesheet">
+        <title>Страница</title>
+        <script>
+            var counter=0
+            el=document.addEventListener("DOMContentLoaded", (event) => {
+                console.log("я загрузился")
+                btn2=document.getElementById("button2")
+                btn2.addEventListener("click", (event)=>myfunc2())
+
+
+                form=document.getElementById('form_id')
+                form.addEventListener('submit', (event)=>form_send())
+                
+                if(localStorage.getItem('username') && localStorage.getItem('password')) {
+                    document.getElementById('input1').value = localStorage.getItem('username');
+                    document.getElementById('input2').value = localStorage.getItem('password');
+                }
+
+                form.addEventListener('submit', function() {
+                    localStorage.setItem('username', document.getElementById('input1').value);
+                    localStorage.setItem('password', document.getElementById('input2').value);
+                });
+            })
+            function myfunc(div){
+                var a=document.getElementById("Counter")
+                counter=counter+1
+                a.innerHTML=counter
+                console.log(counter)
+            }
+
+            function myfunc2(div){
+                var a=document.getElementById("Counter")
+                counter=counter-1
+                a.innerHTML=counter
+                console.log(counter)
+            }
+            
+            function clearForm(){
+                form=document.getElementById("form_id")
+                form.reset()
+            }
+            function form_send(){
+                event.preventDefault();
+                btn2=document.getElementById("button_send")
+                text1=document.getElementById('input1')
+                text2=document.getElementById('input2')
+                if (text1.value=='admin' && text2.value=='admin'){
+                    console.log('Верно')
+                }
+                else{
+                    console.log('Неверно')
+                }
+            }
+            
+
+            
+            
+
+            
+        </script>
+    </head>
+    <body>
+        <header><h1>Лабараторная №1</h1></header>
+
+
+
+        <main>
+            <div class="buttons">
+                <button type="button" class="counter_1" onclick="myfunc()">Кнопка +1</button>
+                <button type="button" id="button2" class='counter_2'>Кнопка -1</button>
+            </div>
+
+            <div id="Counter" class='Counter_div'></div>
+
+
+            <div class="form_div">
+                <form id='form_id'>
+                    <input type="text" placeholder="login" id="input1" class="input_place">
+                    <input type="text" placeholder="password" id="input2", class="input_place">
+
+                    <button type="submit" id="button_send" >Отправить</button>
+                    <button type="clear" id="button_clear" onclick="clearForm()" >Очистить</button>
+                </form>
+            </div>
+            
+            
+        </main>
+
+
+        <footer></footer>
+    </body>
+</html>

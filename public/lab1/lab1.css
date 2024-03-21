@@ -1,0 +1,56 @@
+body{
+    margin:0;
+}
+
+header{
+    display: block;
+    text-align: center;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Counter_div {
+    display: block;
+    width: 100px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:darkseagreen;
+    border: 2px double black;
+    text-align: center;
+}
+
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.counter_1, .counter_2 {
+    
+    background-color: turquoise;
+    border-radius: 5px;
+    font: 2em sans-serif;
+}
+
+.form_div{
+    margin-top: 20px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input_place{
+    color:black;
+    font-size: 30px;
+}
+
+
+
+
+
+
