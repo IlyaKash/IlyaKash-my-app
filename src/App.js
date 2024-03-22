@@ -2,10 +2,9 @@ import { useState } from 'react';
 import './App.css';
 import React from 'react';
 import RenderList from './components/left_menu';
-import Lab2Component from './components/lab2_component';
-import ThemeProvider from './context/ThemeContext';
-import ThemeToggler from './context/ThemeToggler';
-import Lab4Component from './components/lab4_component';
+
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import AppRoutes from './routes/routes';
 
 
 function App() {
@@ -21,25 +20,15 @@ function App() {
       </header>
 
       <main>
-
-        <div className="Left_menu">
-          <RenderList setLab={setLab}/>
-        </div>
-
-        <div className="Content">
-          {lab===1 && (
-            <iframe src='/lab1/lab1.html' title='Lab1' width="80%" height="500px" />
-          )}
-          {lab===2 && (
-            <Lab2Component />
-          )}
-          {lab===4 && (
-            <ThemeProvider>
-              <ThemeToggler />
-              <Lab4Component />
-            </ThemeProvider>
-          )}
-        </div>
+        <BrowserRouter>
+          <div className="Left_menu">
+            <RenderList setLab={setLab}/>
+          </div>
+          
+          <div className="Content">
+            <AppRoutes />
+          </div>
+        </BrowserRouter>
       </main>
     </div>
   );

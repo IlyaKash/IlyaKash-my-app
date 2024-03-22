@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from './container';
 import Button from './button';
+import { Link } from 'react-router-dom';
 
 
 
@@ -38,7 +39,7 @@ const RenderList=({setLab}) =>{
       <Container className="ContainerLeftMenu">
         <ul>
           {myArray.map(item=> (
-            <li key={item.number}><Button onClick={() => change_lab(item.number)}>{item.name}</Button></li>
+            <li key={item.number}><Link to={`/lab_${item.number}`}>{item.name}</Link></li>
           ))}
         </ul>
       </Container>

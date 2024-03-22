@@ -12,7 +12,7 @@ const  Lab2Component= ()=>{
     };
     
     const handleClick3 = () => {
-        window.location.href = 'https://github.com/IlyaKash/web_lab';
+        window.location.href = 'https://github.com/IlyaKash/IlyaKash-my-app.git';
     };
 
     return (

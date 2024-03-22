@@ -53,13 +53,28 @@
 
 .ContainerLeftMenu ul {
   list-style: none; /* Убираем маркеры списка */
-  padding: 0;
+  padding: 0px;
 }
 
 .ContainerLeftMenu li {
   margin-bottom: 10px; /* Отступ между элементами списка */
 }
+.ContainerLeftMenu a{
+  display: block; /* Размещаем кнопки как блочные элементы */
+  width: 100%; /* Ширина кнопок равна ширине родительского элемента */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
 
+.ContainerLeftMenu a:hover {
+  background-color: #0056b3;
+}
 .ContainerLeftMenu button {
   display: block; /* Размещаем кнопки как блочные элементы */
   width: 100%; /* Ширина кнопок равна ширине родительского элемента */
