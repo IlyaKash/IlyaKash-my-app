@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import React from 'react';
 import RenderList from './components/left_menu';
-
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import AppRoutes from './routes/routes';
 
@@ -21,11 +20,11 @@ function App() {
 
       <main>
         <BrowserRouter>
-          <div className="Left_menu">
+          <nav className="Left_menu">
             <RenderList setLab={setLab}/>
-          </div>
+          </nav>
           
-          <div className="Content">
+          <div className="Content_with_labs">
             <AppRoutes />
           </div>
         </BrowserRouter>

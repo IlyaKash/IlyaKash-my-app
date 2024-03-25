@@ -1,8 +1,11 @@
 import React from "react";
+import Container from "./container";
 
 const Lab1Component =() => {
     return(
-        <iframe src='/lab1/lab1.html' title='Lab1' width="80%" height="500px" />
+        <Container>
+            <iframe src='/lab1/lab1.html' title='Lab1' width="80%" height="500px" />
+        </Container>
     );
 }
 

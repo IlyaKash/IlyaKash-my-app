@@ -16,7 +16,6 @@ function AppRoutes(){
               <Route path='/lab_3' Component={Lab3Component} />
               <Route path='/lab_4' element={
                 <ThemeProvider>
-                  <ThemeToggler />
                   <Lab4Component />
                 </ThemeProvider>
                 } />

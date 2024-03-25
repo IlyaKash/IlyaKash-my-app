@@ -1,10 +1,13 @@
 import React from 'react';
+import Container from './container';
 
 const Lab3Component = () =>{
     return(
-        <div>
-            <h1>Лабараторная №3</h1>
-        </div>
+        <Container>
+            <div>
+                <h1>Лабараторная №3</h1>
+            </div>
+        </Container>
     );
 }
 
