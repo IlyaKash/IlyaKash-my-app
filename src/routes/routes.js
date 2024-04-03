@@ -5,6 +5,7 @@ import ThemeToggler from '../context/ThemeToggler';
 import Lab4Component from '../components/lab4_component';
 import Lab1Component from '../components/lab1_component';
 import Lab3Component from '../components/lab3_component';
+import Lab5Component from "../components/lab5_component";
 
 
 function AppRoutes(){
@@ -19,6 +20,7 @@ function AppRoutes(){
                   <Lab4Component />
                 </ThemeProvider>
                 } />
+              <Route path='/lab_5' Component={Lab5Component} />
         </Routes>
     );
 }
