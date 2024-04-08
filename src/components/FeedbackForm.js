@@ -39,6 +39,19 @@ const FeedbackForm = () => {
         }
     };
 
+    const deleteFeedback=async(value)=>{
+        const response=await fetch(`http://localhost:8000/api/feedbacks/${value}`, {
+            method: 'DELETE',
+        });
+
+        if (response.ok){
+            loadFeedbacks();
+        }else {
+            console.error('Failed delete');
+        }
+
+    };
+
     return (
         <div>
             <h1>Feedback App</h1>
@@ -80,7 +93,7 @@ const FeedbackForm = () => {
             <div>
                 {feedbacks.map(feedback => (
                     <div key={feedback.email}>
-                        <strong>Email:</strong> {feedback.email}, <strong>Feedback:</strong> {feedback.feedback}
+                        <button onClick={()=>deleteFeedback(feedback.email)}>Delete</button><strong>Email:</strong> {feedback.email}, <strong>Feedback:</strong> {feedback.feedback}
                     </div>
                 ))}
             </div>
