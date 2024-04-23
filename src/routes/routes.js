@@ -7,6 +7,7 @@ import Lab1Component from '../components/lab1_component';
 import Lab3Component from '../components/lab3_component';
 import Lab5Component from "../components/lab5_component";
 import Lab6Component from "../components/lab6_component";
+import About_me from "../components/about_me";
 
 
 function AppRoutes(){
@@ -23,6 +24,7 @@ function AppRoutes(){
                 } />
               <Route path='/lab_5' Component={Lab5Component} />
               <Route path='/lab_6' Component={Lab6Component} />
+              <Route path='/about' Component={About_me}/>
         </Routes>
     );
 }

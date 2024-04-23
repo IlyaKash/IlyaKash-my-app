@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from './container';
 import { Link } from 'react-router-dom';
+import {Nav} from 'react-bootstrap';
 
 
 
@@ -39,13 +40,12 @@ const RenderList=({setLab}) =>{
     
 
     return (
-      <Container className="ContainerLeftMenu">
-        <ul>
+      <>
           {myArray.map(item=> (
-            <li key={item.number}><Link to={`/lab_${item.number}`}>{item.name}</Link></li>
+            
+            <Nav.Link href={`/lab_${item.number}`}>{item.name}</Nav.Link>
           ))}
-        </ul>
-      </Container>
+      </>
     )
 }
 

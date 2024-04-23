@@ -1,9 +1,35 @@
-.App {
+.App head, main {
+  position: relative;
   text-align: center;
   height:768px;  
   margin: 0;
   padding: 20px;
 }
+
+.App footer{
+  padding-top: 30px;
+  height: 80px;
+}
+
+.Bottom_menu{
+  width: 80%;
+  margin-left: 20%;
+}
+
+.Bottom_menu a{
+  display: block;
+  margin-top: 10px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
 
 
 .App-header {
@@ -24,28 +50,30 @@
 
 
 .ContainerLeftMenu {
-  background-color: #f0f0f0;
-  padding: 0px;
-  margin-right: 20px;
-  margin-left: 0;
-  float: left;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень */
-  border-radius: 5px; /* Округление углов */
-  border: 1px solid #ddd; /* Рамка */
+  position: fixed;
+  left: -300px; /* Изначально скрываем меню за пределами экрана слева */
+  top: 0;
+  height: 100%;
+  width: 150px; /* Ширина меню */
+  background-color: #f8f9fa;
+  padding: 20px;
+  transition: left 0.3s ease; /* Анимация выезда меню */
+  z-index: 1000; /* Устанавливаем высокий z-index, чтобы меню было поверх остального контента */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  
 }
 
-.ContainerLeftMenu ul {
-  list-style: none; /* Убираем маркеры списка */
-  padding: 0px;
+.ContainerLeftMenu.show {
+  left: 0; /* Показываем меню, сдвигая его влево */
 }
 
-.ContainerLeftMenu li {
-  margin-bottom: 10px; /* Отступ между элементами списка */
-}
-.ContainerLeftMenu a{
-  display: block; /* Размещаем кнопки как блочные элементы */
-  width: 40%; /* Ширина кнопок равна ширине родительского элемента */
+.ContainerLeftMenu a,
+.ContainerLeftMenu button {
+  display: block;
   padding: 10px 20px;
+  width: 100px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -53,27 +81,13 @@
   cursor: pointer;
   font-weight: bold;
   text-decoration: none;
+  margin-bottom: 5px;
 }
 
-.ContainerLeftMenu a:hover {
-  background-color: #0056b3;
-}
-.ContainerLeftMenu button {
-  display: block; /* Размещаем кнопки как блочные элементы */
-  width: 100%; /* Ширина кнопок равна ширине родительского элемента */
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
+.ContainerLeftMenu a:hover,
 .ContainerLeftMenu button:hover {
   background-color: #0056b3;
 }
-
 .Content_with_labs{
   overflow: auto;
   border: 5px;
