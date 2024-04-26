@@ -6,6 +6,9 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import AppRoutes from './routes/routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 
 
 
@@ -14,6 +17,7 @@ function App() {
 
 
   return (
+    <DndProvider backend={HTML5Backend}>
       <div className="App">
         <BrowserRouter>
         <header className="Head">
@@ -36,6 +40,7 @@ function App() {
         </footer>
         </BrowserRouter>
       </div>
+      </DndProvider>
   );
 }
 

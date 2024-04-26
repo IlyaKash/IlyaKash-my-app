@@ -35,6 +35,10 @@ const RenderList=({setLab}) =>{
         name: "lab6",
         number: 6,
       },
+      {
+        name: "lab8",
+        number: 8,
+      },
     ];
 
     
