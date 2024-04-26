@@ -1,55 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import add_feedback from '../store/actionCreators/action_add_feedback';
-import store from '../store/store';
-import { useSelector, useDispatch } from 'react-redux';
+import { useGetFeedbacksQuery, useAddFeedbackMutation, useDeleteFeedbackMutation } from '../store/apiSlice';
 
 const FeedbackForm = () => {
-    //const [feedbacks, setFeedbacks] = useState([]);
-    const feedbacks=useSelector(state=>state.feedback.feedbacks);
-    const dispatch=useDispatch();
+    const { data: feedbacks, isLoading, isError, error, refetch } = useGetFeedbacksQuery();
+
+    const [addFeedback] = useAddFeedbackMutation();
+    const [deleteFeedback] = useDeleteFeedbackMutation();
 
     useEffect(() => {
-        loadFeedbacks();
-    }, []);
-
-    const loadFeedbacks = async () => {
-        const response = await fetch('http://localhost:8000/api/feedbacks');
-        const data = await response.json();
-        
-        dispatch(add_feedback(data));
-        console.log(store.getState())
-        //setFeedbacks(data);
-    };
+        if (isError) {
+            console.error('Failed to fetch feedbacks:', error);
+        }
+    }, [isError, error]);
 
     const submitFeedback = async (values, { resetForm }) => {
-        const response = await fetch('http://localhost:8000/api/feedbacks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
-        });
-
-        if (response.ok) {
-            loadFeedbacks();
+        try {
+            await addFeedback(values).unwrap();
             resetForm();
-        } else {
-            console.error('Failed to submit feedback');
+            refetch(); // Повторно загрузить обратную связь после успешной отправки
+        } catch (error) {
+            console.error('Failed to submit feedback:', error);
         }
     };
 
-    const deleteFeedback=async(value)=>{
-        const response=await fetch(`http://localhost:8000/api/feedbacks/${value}`, {
-            method: 'DELETE',
-        });
-
-        if (response.ok){
-            loadFeedbacks();
-        }else {
-            console.error('Failed delete');
+    const handleDeleteFeedback = async (email) => {
+        try {
+            await deleteFeedback(email).unwrap();
+            refetch(); // Повторно загрузить обратную связь после успешного удаления
+        } catch (error) {
+            console.error('Failed to delete feedback:', error);
         }
-
     };
 
     return (
@@ -90,13 +71,20 @@ const FeedbackForm = () => {
             </Formik>
 
             <h2>All Feedbacks</h2>
-            <div>
-                {feedbacks.map(feedback => (
-                    <div key={feedback.email}>
-                        <button onClick={()=>deleteFeedback(feedback.email)}>Delete</button><strong>Email:</strong> {feedback.email}, <strong>Feedback:</strong> {feedback.feedback}
-                    </div>
-                ))}
-            </div>
+            {isLoading ? (
+                <div>Loading...</div>
+            ) : isError ? (
+                <div>Error: Failed to fetch feedbacks</div>
+            ) : (
+                <div>
+                    {feedbacks.map(feedback => (
+                        <div key={feedback.email}>
+                            <button onClick={() => handleDeleteFeedback(feedback.email)}>Delete</button>
+                            <strong>Email:</strong> {feedback.email}, <strong>Feedback:</strong> {feedback.feedback}
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };

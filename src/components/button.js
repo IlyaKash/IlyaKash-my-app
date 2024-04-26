@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({ onClick, children }) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} data-testid="button">
       {children}
     </button>
   );
